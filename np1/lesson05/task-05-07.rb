@@ -1,13 +1,13 @@
 # encoding: utf-8
 
-# Переменные
-exchangeRate = nil
-rubles = nil
-dollars = nil
-
 # Задаем пользователю вопросы
 puts "Курс доллара?"
-exchangeRate = gets.to_f
+exchange_rate = gets.to_f
+
+if (exchange_rate == 0.0)
+  # Ошибочная ситуация
+  abort "Недопустимое значение курса доллара"
+end
 
 puts "Сколько у вас рублей?"
 rubles = gets.to_f
@@ -18,14 +18,19 @@ dollars = gets.to_f
 # Будем считать, что мы хотим балансировать доллары
 
 # Переводим рубли в доллары по текущему курсу
-dollarsCurrectExchange = (rubles / exchangeRate).round(2)
+dollars_currect_exchange = (rubles / exchange_rate).round(2)
 
 # Получаем абсолютную разницу между текущими долларами и долларами по курсу
-difference = (dollars - dollarsCurrectExchange).round(2).abs
+difference = (dollars - dollars_currect_exchange).round(2).abs
 
-# Определяем, нужно продать или купить доллары
-if (dollars > dollarsCurrectExchange)
-  puts "Вам нужно продать #{difference}$"
+# Условие, при котором портфель балансировать не нужно
+if (difference < 1 || dollars == dollars_currect_exchange)
+  puts "Портфель сбалансирован"
 else
-  puts "Вам нужно купить #{difference}$"
+  # Определяем, нужно продать или купить доллары
+  if (dollars > dollars_currect_exchange)
+    puts "Вам нужно продать #{difference}$"
+  else
+    puts "Вам нужно купить #{difference}$"
+  end
 end

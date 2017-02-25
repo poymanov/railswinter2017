@@ -4,60 +4,34 @@
 values = ['Камень', 'Ножницы', 'Бумага']
 
 # Тексты результатов игры
-winUser = "Вы победили"
-winComputer = "Победил компьютер"
+win_user = "Вы победили"
+win_computer = "Победил компьютер"
 
-# Вопрос пользователю
 puts "введите вариант: 0 - камень, 1 - ножницы, 2 - бумага"
 
-# Получаем выбор пользователя
-choice = gets.to_i
+# Выбор пользователя
+user_choice = gets.to_i
+puts "Вы выбрали: " + values[user_choice]
 
-# Отображаем выбор пользователя
-puts "Вы выбрали: " + values[choice]
-
-# Получаем выбор компьютера
-computerChoice = values.sample
-
-# Отображаем выбор компьютера
-puts "Компьютер выбрал: " + computerChoice
+# Выбор компьютера
+computer_choice = rand(3)
+puts "Компьютер выбрал: " + values[computer_choice]
  
-# Получаем индекс выбранного компьютером значения
-indexComputerChoice = nil
-
-if (values[0] == computerChoice)
-  indexComputerChoice = 0
-elsif (values[1] == computerChoice)
-  indexComputerChoice = 1
-elsif (values[2] == computerChoice)
-  indexComputerChoice = 2
-end
-
 # Сравниваем результаты
-
-#0 - камень, 1 - ножницы, 2 - бумага
-
-if (choice == indexComputerChoice)
+if (user_choice == computer_choice)
   # Ничья
-  abort "Победила дружба"
+  puts "Победила дружба"
+  exit
 else
-  if choice == 0 && indexComputerChoice == 1
-    # Камень/Ножницы
-    abort winUser
-  elsif choice == 0 && indexComputerChoice == 2
-    # Камень/Бумага
-    abort winComputer
-  elsif choice == 1 && indexComputerChoice == 0
-    # Ножницы/Камень
-    abort winComputer
-  elsif choice == 1 && indexComputerChoice == 2
-    # Ножницы/Бумага
-    abort winUser
-  elsif choice == 2 && indexComputerChoice == 0
-    # Бумага/Камень
-    abort winUser
-  elsif choice == 2 && indexComputerChoice == 1
-    # Бумага/Ножницы
-    abort winComputer
-  end
+  if (user_choice == 0 && computer_choice == 1) ||
+      (user_choice == 1 && computer_choice == 2) ||
+      (user_choice == 2 && computer_choice == 0)
+    # Победа пользователя
+    puts win_user
+    exit
+  else
+    # Во всех остальных случаях победа компьютера
+    puts win_computer
+    exit
+  end  
 end

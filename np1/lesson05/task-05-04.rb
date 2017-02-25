@@ -21,26 +21,22 @@ choice = gets.to_i
 # ответ пользователя от загаданного результата
 if (choice == number)
   # Пользователь угадал ответ
-
   abort "Ура, вы выиграли!"
-elsif ((choice - number).abs <= 2)
-  # Вариант, когда различие в пределах 2
-  if (choice - number < 0)
-    # Вариант "Тепло", нужно больше
-
-    # Выводим сообщение
-    puts message1
-    
-  elsif (choice - number > 0)
-    # Вариант "Тепло", нужно меньше
-
-    # Выводим сообщение
-    puts message2
-  end
 else
-  # Во всех остальных случаях холодно
+  # Различие в пределах 2
+  if ((choice - number).abs <= 2)
+    puts "Тепло"
+  else
+    puts "Холодно"
+  end
 
-  puts message3
+  if (choice - number < 0)
+    # Нужно больше
+    puts "Нужно больше"
+  elsif (choice - number > 0)
+    # Нужно меньше
+    puts "Нужно меньше"
+  end
 end
 
 # Задаем пользователю вопрос
@@ -53,26 +49,22 @@ choice = gets.to_i
 # ответ пользователя от загаданного результата
 if (choice == number)
   # Пользователь угадал ответ
-
   abort "Ура, вы выиграли!"
-elsif ((choice - number).abs <= 2)
-  # Вариант, когда различие в пределах 2
-  if (choice - number < 0)
-    # Вариант "Тепло", нужно больше
-
-    # Выводим сообщение
-    puts message1
-    
-  elsif (choice - number > 0)
-    # Вариант "Тепло", нужно меньше
-
-    # Выводим сообщение
-    puts message2
-  end
 else
-  # Во всех остальных случаях холодно
+  # Различие в пределах 2
+  if ((choice - number).abs <= 2)
+    puts "Тепло"
+  else
+    puts "Холодно"
+  end
 
-  puts message3
+  if (choice - number < 0)
+    # Нужно больше
+    puts "Нужно больше"
+  elsif (choice - number > 0)
+    # Нужно меньше
+    puts "Нужно меньше"
+  end
 end
 
 # Задаем пользователю вопрос
@@ -85,29 +77,23 @@ choice = gets.to_i
 # ответ пользователя от загаданного результата
 if (choice == number)
   # Пользователь угадал ответ
-
   abort "Ура, вы выиграли!"
-elsif ((choice - number).abs <= 2)
-  # Вариант, когда различие в пределах 2
-  if (choice - number < 0)
-    # Вариант "Тепло", нужно больше
-
-    # Выводим сообщение
-    puts message1
-    
-  elsif (choice - number > 0)
-    # Вариант "Тепло", нужно меньше
-
-    # Выводим сообщение
-    puts message2
-  end
 else
-  # Во всех остальных случаях холодно
+  # Различие в пределах 2
+  if ((choice - number).abs <= 2)
+    puts "Тепло"
+  else
+    puts "Холодно"
+  end
 
-  puts message3
+  if (choice - number < 0)
+    # Нужно больше
+    puts "Нужно больше"
+  elsif (choice - number > 0)
+    # Нужно меньше
+    puts "Нужно меньше"
+  end
 end
-
-
 
 # Далее считаем, что пользователь проиграл
 puts "Сожалаем, но вы проиграли."
