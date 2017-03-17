@@ -7,15 +7,15 @@
   div5 = number % 5 == 0
 
   # Результат выбора
-  if div3 && div5
-    result = "тыры-пыры"
-  elsif div3
-    result = "тыры"
-  elsif div5
-    result = "пыры"
-  else
-    result = number
-  end
+  result = if div3 && div5
+             "тыры-пыры"
+           elsif div3
+             "тыры"
+           elsif div5
+             "пыры"
+           else
+             number
+           end
 
   puts result
 end
