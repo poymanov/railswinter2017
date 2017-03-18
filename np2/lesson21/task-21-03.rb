@@ -1,7 +1,6 @@
 # encoding: utf-8
 
 (1..100).each do |number|
-
   # Проверка делимостей
   div3 = number % 3 == 0
   div5 = number % 5 == 0
