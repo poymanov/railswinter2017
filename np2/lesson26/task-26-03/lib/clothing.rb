@@ -15,14 +15,12 @@ class Clothing
 
   # Диапазон температуры
   def temperature_from_string(string)
-    string = string.delete("(")
-    string = string.delete(")")
-    string = string.split(", ")
+    string.delete("(").delete(")").split(", ")
   end
 
   # Соответствие погоде
   def available_for_temperature?(temperature)
-    temperature.between?(@temperature_from, @temperature_from)
+    temperature.between?(@temperature_from, @temperature_to)
   end
 
   # Представление для вывода
