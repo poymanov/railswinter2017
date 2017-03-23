@@ -9,5 +9,9 @@ require_relative "lib/question"
 
 file_path = current_path + "/data/data.xml"
 
-game = Game.new(file_path)
+# Получение вопросов для викторины
+questions = Question.parse_xml(file_path)
+
+# Запуск игры
+game = Game.new(questions)
 game.play
