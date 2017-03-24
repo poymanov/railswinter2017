@@ -17,34 +17,16 @@ class Game
       # Вывод вопроса
       puts question.text
 
-      question.variants.shuffle!
-
-      question.variants.each do |variant|
-        puts variant
-      end
-
-      max_time_sec = question.max_time * 60
+      # Вывод вариантов ответов
+      question.show_question_variants()
 
       puts "Время на ответ #{question.max_time} мин."
       puts
 
-      # Время начала ответа на вопрос
-      time_begin = Time.now
+      # Обработка ответа пользователя
+      answer_status = proccess_user_input(question)
 
-      user_answer = STDIN.gets.chomp
-
-      # Время окончания ответа на вопрос
-      time_end = Time.now
-
-      # Время потраченное на ответ
-      time_spent = (time_end - time_begin).round
-
-      if time_spent > max_time_sec
-        abort "На ответ потрачено более #{question.max_time} мин. Игра завершена."
-      end
-
-      # Пользователь ввел ответ
-      if user_answer == question.right_variant
+      if answer_status
         puts "Верный ответ!"
         puts
         @right_answers += 1
@@ -55,5 +37,27 @@ class Game
     end
 
     puts "У вас #{@right_answers} правильных ответов из #{@questions.size}"
+  end
+
+  # Обработка ответа пользователя
+  def proccess_user_input(question)
+    max_time_sec = question.max_time * 60
+
+    # Время начала ответа на вопрос
+    time_begin = Time.now
+
+    user_answer = STDIN.gets.chomp
+
+    # Время окончания ответа на вопрос
+    time_end = Time.now
+
+    # Время потраченное на ответ
+    time_spent = (time_end - time_begin).round
+
+    if time_spent > max_time_sec
+      abort "На ответ потрачено более #{question.max_time} мин. Игра завершена."
+    end
+
+    user_answer == question.right_variant
   end
 end

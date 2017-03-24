@@ -1,11 +1,11 @@
 class Question
   attr_reader :text, :max_time, :variants, :right_variant
 
-  def initialize(params)
-    @text = params[:text]
-    @max_time = params[:max_time]
-    @variants = params[:variants]
-    @right_variant = params[:right_variant]
+  def initialize(text, max_time, variants, right_variant)
+    @text = text
+    @max_time = max_time
+    @variants = variants
+    @right_variant = right_variant
   end
 
   # Получение массива вопросов из xml
@@ -37,14 +37,18 @@ class Question
       end
 
       # Создание вопроса
-      questions << self.new(
-        text: text,
-        max_time: max_time,
-        variants: variants,
-        right_variant: right_variant
-      )
+      questions << self.new(text, max_time, variants, right_variant)
     end
 
     questions
+  end
+
+  # Вывод вариантов ответа на вопрос
+  def show_question_variants()
+    variants.shuffle!
+
+    variants.each do |variant|
+      puts variant
+    end
   end
 end
