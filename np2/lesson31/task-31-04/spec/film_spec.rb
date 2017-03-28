@@ -1,14 +1,13 @@
-require 'rspec'
-require_relative '../lib/film'
+require 'film'
 
-describe 'Film Class' do
-  current_path = File.dirname(__FILE__)
+describe Film do
+  let(:film) do
+    current_path = File.dirname(__FILE__)
+    Film.new(current_path + "/fixtures/films/film01.txt")
+  end
 
   context '#initialize' do
-    it 'create new instance' do
-      film_path = current_path + "/fixtures/films/film01.txt"
-      film = Film.new(film_path)
-
+    it 'creates new instance' do
       expect(film.film).to eq "Волк с Уолл-стрит"
       expect(film.director).to eq "Мартин Скорсезе"
       expect(film.year).to eq "2013"
@@ -17,9 +16,6 @@ describe 'Film Class' do
 
   context '#info' do
     it 'returns right information' do
-      film_path = current_path + "/fixtures/films/film01.txt"
-      film = Film.new(film_path)
-
       expect(film.info).to eq "Мартин Скорсезе - Волк с Уолл-стрит (2013)"
     end
   end
