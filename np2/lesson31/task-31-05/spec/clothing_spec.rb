@@ -1,14 +1,14 @@
-require 'rspec'
-require_relative '../lib/clothing'
+require 'clothing'
 
-describe 'Clothing Class' do
-  current_path = File.dirname(__FILE__)
+describe Clothing do
+  let(:clothing) do
+    current_path = File.dirname(__FILE__)
+    file_path = current_path + '/fixtures/clothes/01.txt'
+    clothing = Clothing.new(file_path)
+  end
 
   context '#initialize' do
-    it 'returns right data' do
-      file_path = current_path + '/fixtures/clothes/01.txt'
-      clothing = Clothing.new(file_path)
-
+    it 'create instance' do
       expect(clothing.name).to eq "Шапка-ушанка"
       expect(clothing.type).to eq "Головной убор"
       expect(clothing.temperature_from).to eq -20
@@ -17,26 +17,17 @@ describe 'Clothing Class' do
   end
 
   context '#available_for_temperature?' do
-    it 'available for temperature' do
-      file_path = current_path + '/fixtures/clothes/01.txt'
-      clothing = Clothing.new(file_path)
-
+    it 'returns truthy result' do
       expect(clothing.available_for_temperature?(-15)).to be_truthy
     end
 
-    it 'not available for temperature' do
-      file_path = current_path + '/fixtures/clothes/01.txt'
-      clothing = Clothing.new(file_path)
-
+    it 'returns falsey result' do
       expect(clothing.available_for_temperature?(15)).to be_falsey
     end
   end
 
   context '#info' do
-    it 'return right info for clothing' do
-      file_path = current_path + '/fixtures/clothes/01.txt'
-      clothing = Clothing.new(file_path)
-
+    it 'returns clothings info' do
       expect(clothing.info).to eq "Шапка-ушанка, Головной убор, -20..-5"
     end
   end

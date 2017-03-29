@@ -1,68 +1,32 @@
-require 'rspec'
-require_relative '../lib/clothing'
-require_relative '../lib/clothes_collection'
+require 'clothing'
+require 'clothes_collection'
 
 describe 'ClothesCollection Class' do
-  current_path = File.dirname(__FILE__)
-  dir_path = current_path + '/fixtures/clothes'
+  let(:clothes_collection) do
+    current_path = File.dirname(__FILE__)
+    dir_path = current_path + '/fixtures/clothes'
+    clothes_collection = ClothesCollection.new(dir_path)
+  end
 
-  context '#clothes_from_dir' do
-    it 'returns 3 clothes' do
-      clothes_collection = ClothesCollection.new(dir_path)
+  it 'returns clothes from file' do
+    expect(clothes_collection.clothes[0].name).to eq "Шапка-ушанка"
+    expect(clothes_collection.clothes[0].type).to eq "Головной убор"
+    expect(clothes_collection.clothes[0].temperature_from).to eq -20
+    expect(clothes_collection.clothes[0].temperature_to).to eq -5
 
-      expect(clothes_collection.clothes.size).to eq 3
-    end
+    expect(clothes_collection.clothes[1].name).to eq "Кросовки"
+    expect(clothes_collection.clothes[1].type).to eq "Обувь"
+    expect(clothes_collection.clothes[1].temperature_from).to eq 0
+    expect(clothes_collection.clothes[1].temperature_to).to eq 15
 
-    it 'returns 3 right clothes' do
-      clothes_collection = ClothesCollection.new(dir_path)
-
-      clothes = [
-        {
-          name: "Шапка-ушанка",
-          type: "Головной убор",
-          temperature_from: -20,
-          temperature_to: -5
-        },
-        {
-          name: "Кросовки",
-          type: "Обувь",
-          temperature_from: 0,
-          temperature_to: 15
-        },
-        {
-          name: "Черная куртка",
-          type: "Куртка",
-          temperature_from: -5,
-          temperature_to: 10
-        },
-      ]
-
-      right_clothes = []
-
-      clothes_collection.clothes.each do |clothing|
-        clothes.each do |needed_clothing|
-          if clothing.name == needed_clothing[:name] &&
-            clothing.type == needed_clothing[:type] &&
-            clothing.temperature_from == needed_clothing[:temperature_from] &&
-            clothing.temperature_to == needed_clothing[:temperature_to]
-            right_clothes << clothing
-          end
-        end
-      end
-
-      expect(right_clothes.size).to eq clothes.size
-    end
+    expect(clothes_collection.clothes[2].name).to eq "Черная куртка"
+    expect(clothes_collection.clothes[2].type).to eq "Куртка"
+    expect(clothes_collection.clothes[2].temperature_from).to eq -5
+    expect(clothes_collection.clothes[2].temperature_to).to eq 10
   end
 
   context '#types' do
-    it 'return 3 clothes types' do
-      clothes_collection = ClothesCollection.new(dir_path)
-
-      expect(clothes_collection.types.size).to eq 3
-    end
-
-    it 'return 3 right clothes types' do
-      clothes_collection = ClothesCollection.new(dir_path)
+    it 'returns clothes types' do
       types = clothes_collection.types
 
       expect(types.include?('Головной убор')).to be_truthy
@@ -72,8 +36,7 @@ describe 'ClothesCollection Class' do
   end
 
   context '#clothes_by_type' do
-    it 'return right clothing by type' do
-      clothes_collection = ClothesCollection.new(dir_path)
+    it 'returns clothing by type' do
       clothes = clothes_collection.clothes_by_type('Головной убор')
 
       is_clothing = false
