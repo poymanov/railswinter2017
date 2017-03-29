@@ -17,7 +17,7 @@ class FilmCollection
   # Получение фильмов
   def films_from_dir
     # Перебор файлов с фильмами
-    Dir[@path + '/*.txt'].each do |file_path|
+    Dir[@path + '/*.txt'].sort.each do |file_path|
       # Создание фильма
       film = Film.new(file_path)
 

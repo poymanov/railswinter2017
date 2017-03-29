@@ -13,13 +13,13 @@ describe FilmCollection do
     end
 
     it 'returns 3 right films from dir' do
-      expect(film_collection.films[0].film).to eq 'Остров проклятых'
+      expect(film_collection.films[0].film).to eq 'Волк с Уолл-стрит'
       expect(film_collection.films[0].director).to eq 'Мартин Скорсезе'
-      expect(film_collection.films[0].year).to eq '2009'
+      expect(film_collection.films[0].year).to eq '2013'
 
-      expect(film_collection.films[1].film).to eq 'Волк с Уолл-стрит'
+      expect(film_collection.films[1].film).to eq 'Остров проклятых'
       expect(film_collection.films[1].director).to eq 'Мартин Скорсезе'
-      expect(film_collection.films[1].year).to eq '2013'
+      expect(film_collection.films[1].year).to eq '2009'
 
       expect(film_collection.films[2].film).to eq 'Хоббит: Битва пяти воинств'
       expect(film_collection.films[2].director).to eq 'Питер Джексон'
