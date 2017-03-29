@@ -18,7 +18,7 @@ class ClothesCollection
   def clothes_from_dir
     @clothes = []
 
-    Dir[@path + '/*.txt'].each do | file_path |
+    Dir[@path + '/*.txt'].sort.each do | file_path |
       clothing = Clothing.new(file_path)
       @clothes << clothing
     end
