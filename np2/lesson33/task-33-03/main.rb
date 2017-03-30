@@ -14,7 +14,7 @@ puts data.keys.join(", ")
 # Запрос элемента
 puts
 puts "О каком элементе хотите узнать?"
-element = STDIN.gets.chomp
+element = STDIN.gets.chomp.capitalize
 puts
 
 # Вывод результатов
