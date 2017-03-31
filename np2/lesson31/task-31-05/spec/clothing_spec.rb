@@ -17,11 +17,11 @@ describe Clothing do
   end
 
   context '#available_for_temperature?' do
-    it 'returns truthy result' do
+    it 'clothing available for temperature' do
       expect(clothing.available_for_temperature?(-15)).to be_truthy
     end
 
-    it 'returns falsey result' do
+    it 'clotning not available for temperature' do
       expect(clothing.available_for_temperature?(15)).to be_falsey
     end
   end

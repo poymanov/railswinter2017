@@ -29,9 +29,9 @@ describe 'ClothesCollection Class' do
     it 'returns clothes types' do
       types = clothes_collection.types
 
-      expect(types.include?('Головной убор')).to be_truthy
-      expect(types.include?('Обувь')).to be_truthy
-      expect(types.include?('Куртка')).to be_truthy
+      expect(types).to include('Головной убор')
+      expect(types).to include('Обувь')
+      expect(types).to include('Куртка')
     end
   end
 
