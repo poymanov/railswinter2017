@@ -1,0 +1,31 @@
+# В один запрос
+
+SELECT
+    `people`.`rowid`, `people`.`name`, `people`.`phone`, `people`.`company_id`
+FROM
+    `people`
+LEFT JOIN
+    `company` ON `people`.`company_id` = `company`.`id`
+WHERE
+    `company`.`name` = "Google"
+
+# В два запроса
+
+# Получаем id компании по названию
+SELECT
+    `id`
+FROM
+    `company`
+WHERE
+    `name` = "Google"
+
+# Подставляем полученный id компании для поиска людей, которые в ней работают
+SELECT
+    *
+FROM
+    `people`
+WHERE
+    `company_id` = 1
+
+
+
