@@ -8,7 +8,7 @@ describe Clothing do
   end
 
   context '#initialize' do
-    it 'create instance' do
+    it 'create clothing instance' do
       expect(clothing.name).to eq "Шапка-ушанка"
       expect(clothing.type).to eq "Головной убор"
       expect(clothing.temperature_from).to eq -20
