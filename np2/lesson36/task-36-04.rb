@@ -4,10 +4,14 @@ require 'uri'
 require 'net/http'
 require 'rexml/document'
 
-
 uri = URI.parse('http://www.cbr.ru/scripts/XML_daily.asp')
 
-response = Net::HTTP.get_response(uri)
+begin
+  response = Net::HTTP.get_response(uri)
+rescue Exception => error
+  puts error.message
+  abort "Не удалось получить курс"
+end
 
 doc = REXML::Document.new(response.body)
 
@@ -26,6 +30,9 @@ end
 if exchange_rate.nil?
   abort "не удалось получить курс доллара"
 end
+
+puts "Курс доллара: #{exchange_rate} руб."
+puts
 
 # Задаем пользователю вопросы
 if (exchange_rate == 0.0)
