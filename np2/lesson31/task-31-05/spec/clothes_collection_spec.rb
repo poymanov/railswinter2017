@@ -9,7 +9,7 @@ describe ClothesCollection do
   end
 
   context '#initialize' do
-    it 'returns clothes from file' do
+    it 'initialize object with clothes data' do
       current_path = File.dirname(__FILE__)
       dir_path = current_path + '/fixtures/clothes'
       clothes_collection = ClothesCollection.new(dir_path)
@@ -42,22 +42,10 @@ describe ClothesCollection do
   end
 
   context '#clothes_by_type' do
-    it 'returns clothing by type' do
+    it 'returns array of clothes by type argument' do
       clothes = clothes_collection.clothes_by_type('Головной убор')
 
-      is_clothing = false
-
-      clothes.each do |item|
-        if item.name == "Шапка-ушанка" &&
-           item.type == "Головной убор" &&
-           item.temperature_from == -20 &&
-           item.temperature_to == -5
-           is_clothing = true
-           break
-        end
-      end
-
-      expect(is_clothing).to be_truthy
+      expect(clothes.any?).to be_truthy
     end
   end
 end
