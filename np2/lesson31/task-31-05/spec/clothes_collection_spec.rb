@@ -9,7 +9,7 @@ describe ClothesCollection do
   end
 
   context '#initialize' do
-    it 'initialize object with clothes data' do
+    it 'initialize object with clothes data from directory' do
       current_path = File.dirname(__FILE__)
       dir_path = current_path + '/fixtures/clothes'
       clothes_collection = ClothesCollection.new(dir_path)
@@ -42,7 +42,7 @@ describe ClothesCollection do
   end
 
   context '#clothes_by_type' do
-    it 'returns array of clothes by type argument' do
+    it 'returns array of all clothes by type argument' do
       clothes = clothes_collection.clothes_by_type('Головной убор')
 
       expect(clothes.any?).to be_truthy
