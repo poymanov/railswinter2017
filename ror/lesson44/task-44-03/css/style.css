@@ -1,0 +1,33 @@
+body {
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+.wrapper {
+    width: 700px;
+    margin: 0 auto;
+}
+
+p {
+    text-align: justify;
+}
+
+.main-image {
+    text-align: center;
+}
+
+.description {
+    border-bottom: 1px solid grey;
+}
+
+.step {
+    text-align: center;
+    border-bottom: 1px solid grey;
+}
+
+.step p {
+    text-align: center;
+}
+
+.origin {
+    text-align: right;
+}
