@@ -1,0 +1,18 @@
+.alert {
+    width: 500px;
+    padding: 20px;
+    border: 2px solid #000;
+    color: #fff;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.alert-success {
+    border-color: darkcyan;
+    background: green;
+}
+
+.alert-error {
+    border-color: crimson;
+    background: #cc0000;
+}

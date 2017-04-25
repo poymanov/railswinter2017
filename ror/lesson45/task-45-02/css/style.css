@@ -1,0 +1,26 @@
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.block {
+    width: 500px;
+    background: darkcyan;
+    color: #fff;
+    padding: 20px;
+}
+
+.block p {
+    margin: 0;
+}
+
+.left {
+    width: 45%;
+    float: left;
+}
+
+.right {
+    width: 55%;
+    float: right;
+}
